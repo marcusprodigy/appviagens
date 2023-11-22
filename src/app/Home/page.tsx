@@ -1,6 +1,7 @@
 'use client'
 import React, { useState } from 'react';
 import Locais from './locais';
+import Link from 'next/link';
 
 export default function Home() {
     const [check, setCheck] = useState(0);
@@ -77,7 +78,8 @@ export default function Home() {
             <section className='w-full h-1/4'>
                 <div className='h-full w-full gap-4 flex overflow-hidden overflow-x-scroll p-3'>
                     {locais.filter((locais) => locais.tema === check.toString()).slice().map((locais, index) => (
-                        <button key={index} className='w-full h-full relative rounded-xl bg-white justify-start flex px-2 py-3'>
+                        <Link key={index}
+                            href={`/Explain?local=${locais.local}&img=${locais.img}&pais=${locais.pais}&desc=${locais.descricao}&price=${locais.valor}`} className='w-full h-full relative rounded-xl bg-white justify-start flex px-2 py-3'>
                             <div className='h-full w-96 rounded-xl shadow-sm shadow-gray-700 relative overflow-hidden mb-2'>
                                 <img src={locais.img} alt="" className='w-auto  h-full object-cover rounded-md' />
                             </div>
@@ -98,7 +100,7 @@ export default function Home() {
                                     </p>
                                 </div>
                             </div>
-                        </button>
+                        </Link>
                     ))}
                 </div>
             </section>
